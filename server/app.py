@@ -1,12 +1,15 @@
 from flask import Flask, request, jsonify, make_response
 from flask_migrate import Migrate
 from flask_restful import Resource, Api
+from flask_cors import CORS
 
 from models import db, User, Post
 
 app = Flask(__name__)
 
 api=Api(app)
+
+CORS(app)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///app.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
